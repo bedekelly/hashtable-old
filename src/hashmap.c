@@ -119,6 +119,16 @@ void bucketDelete(struct bucket *bucket, char *key) {
 }
 
 
+void resizeUp(struct hashmap *map) {
+  // Todo: implement resizeUp!
+}
+
+
+void resizeDown(struct hashmap *map) {
+  // Todo: implement resizeDown!
+}
+
+
 /**
  * Insert a key-value pair into a hashmap. The value in this case
  * is a pointer to some data and the size in bytes of that data.
@@ -128,6 +138,9 @@ void hashmapInsert(struct hashmap *map, char *key, void *data, long size) {
   struct bucket *bucket = &(map->buckets[index]);
   if(bucketInsert(bucket, key, data, size))
     map->loadFactor += 1.0f / map->numBuckets;
+
+  if (map->loadFactor >= 0.75f)
+    resizeUp(map);
 }
 
 
@@ -147,6 +160,9 @@ void hashmapDelete(struct hashmap *map, char *key) {
   int index = hash(key) % map->numBuckets;
   bucketDelete(&map->buckets[index], key);
   map->loadFactor -= 1.0f/map->numBuckets;
+
+  if (map->loadFactor <= 0.25f)
+    resizeDown(map);
 }
 
 

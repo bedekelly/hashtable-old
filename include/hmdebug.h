@@ -1,5 +1,6 @@
 #pragma once
 #include "hashmap.h"
+#include "time.h"
 
 ////////////////////////////////////////////////////
 // Print methods: to display a pretty Map format! //
@@ -12,3 +13,5 @@ void printEntry(struct hashmapEntry *entry);
 void printBucket(struct bucket bucket);
 
 void printHashmap(struct hashmap *hashmap);
+
+double getTime();

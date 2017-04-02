@@ -20,6 +20,22 @@ int main(int argc, char* argv[]) {
   printHashmap(hashmap);
   printf("\n");
   #endif
+
+  // Don't buffer stdout, so we can "tee" our results.
+  setbuf(stdout, NULL);
+  
+  for (int s=39; s<50; s++) {
+    double startTime = getTime();
+    for (int i=0; i<5000; i++)
+      for (char c=64; c != 0; c++)
+	for (int j=0; j<s; j++) {
+	  char str[] = {j, '\0'};
+	  char val[] = {j, 'v', '\0'};
+	  hashmapInsert(hashmap, str, strdup(val), 1);
+	}
+    double endTime = getTime();
+    printf("Stress test (%d) took %.0f seconds\n", s, endTime - startTime);
+  }
   
   printf("All tests passed!\n");
 }

@@ -35,3 +35,14 @@ void printHashmap(struct hashmap *hashmap) {
   }
   printf("}\n");
 }
+
+
+// Timing method:
+double getTime() {
+  struct timespec time;
+  clock_gettime(CLOCK_REALTIME, &time);
+
+  // Todo: use time.tv_nsec for higher-res time.
+  double currentTime = time.tv_sec;
+  return currentTime;
+}
