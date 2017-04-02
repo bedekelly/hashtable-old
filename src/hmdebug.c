@@ -27,7 +27,7 @@ void printBucket(struct bucket bucket) {
 }
 
 void printHashmap(struct hashmap *hashmap) {
-  printf("\nMap (load factor = %.2f) {\n", hashmap->loadFactor);
+  printf("Map (load factor = %.2f) {\n", hashmap->loadFactor);
   for (int i=0; i<hashmap->numBuckets; i++) {
     printf("    %d => ", i);
     printBucket(hashmap->buckets[i]);

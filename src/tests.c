@@ -15,6 +15,11 @@ int main(int argc, char* argv[]) {
   assert(hashmapGet(hashmap, "1.2") == NULL);
   assert(strcmp(hashmapGet(hashmap, "1")->start, "value 1") == 0);
   assert(strcmp(hashmapGet(hashmap, "1.3")->start, "value 1.3") == 0);
+
+  #ifdef DEBUG
+  printHashmap(hashmap);
+  printf("\n");
+  #endif
   
   printf("All tests passed!\n");
 }
