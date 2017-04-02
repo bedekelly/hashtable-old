@@ -1,4 +1,4 @@
-# C Hashmap
+# Hashtable
 
 This is a naive implementation of hashmaps in C, following only the algorithms provided on Wikipedia and other sites, and without recourse to previous implementations in C. The intent is to add to this implementation, optimizing it for speed and time complexity, and at some suitable point to run benchmark tests against various other implementations including Python dictionaries.
 
